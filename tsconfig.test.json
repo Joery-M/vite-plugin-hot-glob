@@ -1,0 +1,16 @@
+{
+    "extends": "./tsconfig.json",
+    "include": ["./vitest.config.ts", "./tests/**/*.ts", "./rolldown.config.js"],
+    "compilerOptions": {
+        "moduleResolution": "Bundler",
+        "module": "ESNext",
+        "target": "ESNext",
+
+        "composite": true,
+        "declaration": true,
+        "strictNullChecks": true,
+        "allowSyntheticDefaultImports": true,
+        "typeRoots": ["./node_modules/"],
+        "types": ["vite/client", "../dist/meta.d.ts"]
+    }
+}
