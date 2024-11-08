@@ -1,0 +1,52 @@
+{
+    "name": "vite-plugin-hot-glob",
+    "description": "Vite plugin to accept HMR on glob patterns",
+    "version": "1.0.0",
+    "author": "Joery Münninghoff",
+    "license": "MIT",
+    "keywords": [
+        "vite",
+        "glob",
+        "hmr"
+    ],
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "exports": {
+        "require": "./dist/index.js",
+        "default": "./dist/index.mjs",
+        "import": "./dist/index.mjs"
+    },
+    "scripts": {
+        "build": "pnpm clean && rolldown -c",
+        "clean": "rimraf --glob ./dist/**",
+        "lint": "eslint ./src/",
+        "format": "prettier ./src/ --write"
+    },
+    "peerDependencies": {
+        "vite": "^3.1.0 || ^4.0.0 || ^5.0.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.14.0",
+        "@types/eslint__js": "^8.42.3",
+        "@types/estree": "^1.0.6",
+        "@types/node": "^22.9.0",
+        "@types/picomatch": "^3.0.1",
+        "eslint": "^9.14.0",
+        "prettier": "^3.3.3",
+        "rimraf": "^6.0.1",
+        "rolldown": "nightly",
+        "rollup": "^4.24.4",
+        "rollup-plugin-copy": "^3.5.0",
+        "typescript": "^5.6.3",
+        "typescript-eslint": "^8.13.0",
+        "vite": "^5.4.10"
+    },
+    "dependencies": {
+        "magic-string": "^0.30.12",
+        "picomatch": "^4.0.2",
+        "strip-literal": "^2.1.0",
+        "tinyglobby": "^0.2.10"
+    },
+    "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+}

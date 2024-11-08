@@ -1,0 +1,17 @@
+{
+    "include": ["./src/**/*.ts", "./eslint.config.mjs", "./rolldown.config.js", "./types/estree.d.ts"],
+    "compilerOptions": {
+        "lib": ["es2023"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "target": "es2022",
+
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "allowJs": true,
+        "typeRoots": ["./node_modules/@types"],
+        "types": ["node"]
+    },
+    "exclude": ["dist", "test"]
+}
