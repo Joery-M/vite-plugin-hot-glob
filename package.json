@@ -12,10 +12,17 @@
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "exports": {
-        "require": "./dist/index.js",
-        "default": "./dist/index.mjs",
-        "import": "./dist/index.mjs"
+        ".": {
+            "require": "./dist/index.js",
+            "default": "./dist/index.mjs",
+            "import": "./dist/index.mjs",
+            "types": "./dist/index.d.ts"
+        },
+        "./types": {
+            "types": "./dist/types.d.ts"
+        }
     },
     "scripts": {
         "build": "pnpm clean && rolldown -c",

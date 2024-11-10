@@ -62,7 +62,7 @@ import.meta.hot.accept({ glob: ['./components/**/*.tsx', './views/**/*.vue'] }, 
     // ...
     "compilerOptions": {
         // ...
-        "types": ["vite-plugin-hot-glob/meta"]
+        "types": ["vite-plugin-hot-glob/types"]
     }
     // ...
 }
@@ -71,11 +71,11 @@ import.meta.hot.accept({ glob: ['./components/**/*.tsx', './views/**/*.vue'] }, 
 Global `.d.ts` file
 
 ```ts
-import 'vite-plugin-hot-glob/meta';
+import 'vite-plugin-hot-glob/types';
 
 ---
 
-/// <reference path="vite-plugin-hot-glob/meta" />
+/// <reference path="vite-plugin-hot-glob/types" />
 ```
 
 ## How it works

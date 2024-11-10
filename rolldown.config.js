@@ -14,7 +14,7 @@ export default defineConfig([
             copy({
                 targets: [
                     {
-                        src: './types/{index,meta}.d.ts',
+                        src: './types/{index,types}.d.ts',
                         dest: './dist/'
                     }
                 ]

@@ -1,5 +1,5 @@
 import 'vite/types/hot.d.ts';
-import type { HotGlobModules } from '.';
+import { HotGlobModules } from './index';
 
 declare module 'vite/types/hot.d.ts' {
     export interface ViteHotContext {
