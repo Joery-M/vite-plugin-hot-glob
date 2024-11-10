@@ -19,6 +19,7 @@ interface ParsedImportGlob {
     globStart: number;
     globEnd: number;
     callback?: {
+        isAnonymous: boolean;
         start: number;
         end: number;
         spreadStart?: number;
@@ -144,12 +145,17 @@ async function parseAcceptGlob(
                 callback = {
                     start: arg2.argument.start + start,
                     end: arg2.argument.end + start,
-                    spreadStart: arg2.start + start
+                    spreadStart: arg2.start + start,
+                    isAnonymous: false
                 };
-            } else {
+            } else if (
+                (arg2.type == 'FunctionExpression' || arg2.type == 'ArrowFunctionExpression') &&
+                arg2.params.length > 0
+            ) {
                 callback = {
                     start: arg2.start + start,
-                    end: arg2.end + start
+                    end: arg2.end + start,
+                    isAnonymous: arg2.type == 'ArrowFunctionExpression'
                 };
             }
         }
@@ -247,19 +253,20 @@ async function transformGlobAccept(
              */
             if (callback) {
                 const callbackString = s.slice(callback.start, callback.end);
+                const fnStart = callback.isAnonymous ? '(m) => {\n' : 'function (m) {\n';
 
                 if (callback.spreadStart) {
                     // If its a spread argument, just take the first item
                     s.overwrite(
                         callback.spreadStart,
                         callback.end,
-                        `function (m) {\n` + `const [cb] = ${callbackString};\n`
+                        fnStart + `const [cb] = ${callbackString};\n`
                     );
                 } else {
                     s.overwrite(
                         callback.start,
                         callback.end,
-                        `function (m) {\n` + `const cb = (${callbackString});\n`
+                        fnStart + `const cb = (${callbackString});\n`
                     );
                 }
 
