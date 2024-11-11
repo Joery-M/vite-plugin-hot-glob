@@ -8,7 +8,7 @@ import { escapePath, glob } from 'tinyglobby';
 import {
     normalizePath,
     parseAstAsync,
-    type PluginOption,
+    type Plugin,
     type ResolvedConfig,
     type TransformResult
 } from 'vite';
@@ -35,6 +35,7 @@ export default function HotGlob() {
             config = resolvedConfig;
         },
         async transform(code, id) {
+            if (config.command === 'build') return;
             if (id.includes('node_modules')) return;
             if (!code.includes('import.meta.hot')) return;
 
@@ -46,7 +47,7 @@ export default function HotGlob() {
                 return transformStableResult(result, id, config);
             }
         }
-    } as PluginOption;
+    } as Plugin;
 }
 
 const importGlobRE = /\bimport\??\.meta\??\.hot\??\.accept\s*\(/g;
