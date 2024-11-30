@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join, posix } from 'path';
 import { createServer, ViteDevServer } from 'vite';
 import { afterAll, beforeAll, expect, test } from 'vitest';
 import HotGlob from '..';
@@ -18,7 +18,10 @@ beforeAll(async () => {
 });
 
 test('3 files matched', async () => {
-    const result = (await server.transformRequest('test1.ts'))?.code;
+    const result = (await server.transformRequest('test1.ts'))?.code?.replaceAll(
+        posix.resolve('.'),
+        ''
+    );
     expect(result).toBeDefined();
     expect(result).length.above(1);
 
@@ -28,7 +31,10 @@ test('3 files matched', async () => {
 });
 
 test('4 files matched', async () => {
-    const result = (await server.transformRequest('test2.ts'))?.code;
+    const result = (await server.transformRequest('test2.ts'))?.code?.replaceAll(
+        posix.resolve('.'),
+        ''
+    );
     expect(result).toBeDefined();
     expect(result).length.above(1);
 
