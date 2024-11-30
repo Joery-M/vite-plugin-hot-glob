@@ -1,9 +1,13 @@
 {
     "name": "vite-plugin-hot-glob",
     "description": "Vite plugin to accept HMR on glob patterns",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Joery Münninghoff",
     "license": "MIT",
+    "repository": {
+        "url": "https://github.com/Joery-M/vite-plugin-hot-glob"
+    },
+    "homepage": "https://github.com/Joery-M/vite-plugin-hot-glob",
     "keywords": [
         "vite",
         "glob",
